@@ -1,24 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RealEstateApi.Data;
 using RealEstateApi.DTOs;
-using RealEstateApi.Library;
 using RealEstateApi.Services.AuthService;
-using RealEstateApi.Services.Common;
 
 namespace RealEstateApi.Controllers.v1
 {
+    [ServiceFilter(typeof(ValidationFilterAttribute))]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersControllerV1 : ControllerBase
     {
-        private readonly ICommonService _commonService;
-        private readonly IConfiguration _configuration;
         private readonly IAuthService _authService;
         private readonly DBContext _dBContext;
-        public UsersControllerV1(ICommonService commonService, IConfiguration configuration, IAuthService authService)
+        public UsersControllerV1(IConfiguration configuration, IAuthService authService)
         {
-            _commonService = commonService;
-            _configuration = configuration;
             _authService = authService;
             _dBContext = new DBContext();
         }

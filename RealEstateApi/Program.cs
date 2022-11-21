@@ -1,9 +1,12 @@
 global using RealEstateApi.Models;
+global using RealEstateApi.Filters;
+global using RealEstateApi.Library;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using RealEstateApi.Services.AuthService;
 using RealEstateApi.Services.Common;
 using System.Text;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +19,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<IAuthService, AuthService>();
 builder.Services.AddTransient<ICommonService, CommonService>();
+
+builder.Services.AddScoped<ValidationFilterAttribute>();
+builder.Services.Configure<ApiBehaviorOptions>(options
+    => options.SuppressModelStateInvalidFilter = true);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
        .AddJwtBearer(options =>
