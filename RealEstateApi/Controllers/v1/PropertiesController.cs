@@ -9,10 +9,10 @@ namespace RealEstateApi.Controllers.v1
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class PropertiesControllerV1 : ControllerBase
+    public class PropertiesController : ControllerBase
     {
         private readonly DBContext _dBContext;
-        public PropertiesControllerV1()
+        public PropertiesController()
         {
             _dBContext = new();
         }
@@ -92,5 +92,6 @@ namespace RealEstateApi.Controllers.v1
             }
             return await Task.FromResult(Ok(propertiesResult));
         }
+
     }
 }

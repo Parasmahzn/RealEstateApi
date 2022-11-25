@@ -4,7 +4,7 @@ namespace RealEstateApi.DTOs
 {
     public class Register
     {
-        [CustomRequired(ErrorCode= "101", ErrorMessage = "Name is required", AllowEmptyStrings = false)]
+        [Required(ErrorMessage = "Name is required", AllowEmptyStrings = false)]
         [RegularExpression(@"^[A-Za-z][A-Za-z0-9_]{7,29}$", ErrorMessage = "Invalid Name")
         , MaxLength(150, ErrorMessage = "Name should be less than 150 characters")]
         public string Name { get; set; } = string.Empty;

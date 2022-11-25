@@ -7,16 +7,15 @@ namespace RealEstateApi.Controllers.v1
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class CategoriesControllerV1 : ControllerBase
+    public class CategoriesController : ControllerBase
     {
         private readonly DBContext _dBContext;
-        public CategoriesControllerV1()
+        public CategoriesController()
         {
             _dBContext = new DBContext();
         }
 
-        [HttpGet]
-        [Route("Categories")]
+        [HttpGet("GetCategories")]
         public async Task<IActionResult> GetCategoriesList()
         {
             return await Task.FromResult(Ok(_dBContext.Categories));

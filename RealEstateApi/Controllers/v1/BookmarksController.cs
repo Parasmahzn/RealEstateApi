@@ -8,10 +8,10 @@ namespace RealEstateApi.Controllers.v1
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class BookmarksControllerV1 : ControllerBase
+    public class BookmarksController : ControllerBase
     {
         private readonly DBContext _dBContext;
-        public BookmarksControllerV1()
+        public BookmarksController()
         {
             _dBContext = new();
         }

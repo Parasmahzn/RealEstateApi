@@ -5,14 +5,13 @@ using RealEstateApi.Services.AuthService;
 
 namespace RealEstateApi.Controllers.v1
 {
-    [ServiceFilter(typeof(ValidationFilterAttribute))]
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersControllerV1 : ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly IAuthService _authService;
         private readonly DBContext _dBContext;
-        public UsersControllerV1(IConfiguration configuration, IAuthService authService)
+        public UsersController(IAuthService authService)
         {
             _authService = authService;
             _dBContext = new DBContext();

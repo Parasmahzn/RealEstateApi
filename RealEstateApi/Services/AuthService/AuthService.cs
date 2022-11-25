@@ -26,7 +26,7 @@ namespace RealEstateApi.Services.AuthService
                 issuer: _configuration["JWT:Issuer"],
                 audience: _configuration["JWT:Audience"],
                 claims: claims,
-                expires: DateTime.Now.AddDays(60),
+                expires: DateTime.Now.AddSeconds(60),
                 signingCredentials: credentials);
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
 
